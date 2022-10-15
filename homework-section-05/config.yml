@@ -1,0 +1,57 @@
+# package name
+package_name: classification_model
+
+# data sources
+train_data_file : train.csv
+test_data_file : test.csv
+# vars and features
+target : survived
+
+# train test
+test_size : 0.2
+# random_state and other constants
+random_state : 0
+
+C : 0.005
+tol : 0.05
+replace_with : Rare
+
+# pipeline constants
+imputation_method_cat : missing
+
+imputation_method_mean_median : median
+
+extract_letter_vars :
+  - cabin
+
+numeric_variables:
+  - age
+  - sibsp
+  - parch
+  - fare
+
+numeric_variables_with_na:
+  - age
+  - fare
+
+categorical_variables:
+  - pclass
+  - sex
+  - cabin
+  - embarked
+  - title
+
+categorical_variables_with_na:
+  - cabin
+  - embarked
+
+
+
+#var mappings
+
+
+
+
+
+
+
