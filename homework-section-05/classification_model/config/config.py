@@ -1,8 +1,10 @@
 package_name= 'classification_model'
 
 DATA_PATH = "https://www.openml.org/data/get_csv/16826755/phpMYEkMl"
-TRAINED_MODEL_DIR = "trained_modeles"
-
+TRAINED_MODEL_DIR = "trained_models"
+PIPELINE_NAME =  'classification_model'
+PIPELINE_SAVE_FILE =  'classification_model_output_v'
+VERSION = '0.0.1'
 # data sources
 TRAIN_DATA_FILE = 'train.csv'
 TEST_DATA_FILE = 'test.csv'

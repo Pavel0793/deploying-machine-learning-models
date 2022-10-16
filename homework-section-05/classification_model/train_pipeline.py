@@ -1,26 +1,30 @@
-from processing.data_manager import load_dataset
-import config.config as config
+from processing.data_manager import load_dataset, save_pipeline
+#import config.config as config
+from classification_model.config.core import config, DATA_PATH
 from sklearn.model_selection import train_test_split
 from pipeline import titanic_pipe
 # to evaluate the models
 from sklearn.metrics import accuracy_score, roc_auc_score
 
-def run_pipeline():
+def run_pipeline() -> None:
     # loading
-    data = load_dataset(dataset_path = config.DATA_PATH)
+    data = load_dataset(dataset_path = DATA_PATH)
 
     # train test split
-    X = data.drop('survived', axis = 1)
-    y = data['survived']
+    X = data[config.model_config.features]
+    y = data[config.model_config.target]
+
     X_train, X_test, y_train, y_test = train_test_split(
         X, y,
-        test_size= config.TEST_SIZE,
-        random_state=config.RANDOM_STATE)
+        test_size= config.model_config.test_size,
+        random_state=config.model_config.random_state)
 
     # pipeline training
     titanic_pipe.fit(X_train, y_train)
 
     # pipeline saving
+
+    save_pipeline(pipeline_to_save=titanic_pipe)
     # make predictions for train set
     class_ = titanic_pipe.predict(X_train)
     pred = titanic_pipe.predict_proba(X_train)[:, 1]
