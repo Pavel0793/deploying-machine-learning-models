@@ -14,7 +14,7 @@ test_size : 0.2
 # random_state and other constants
 random_state : 0
 
-C : 0.005
+C : 0.0005
 tol : 0.05
 replace_with : Rare
 

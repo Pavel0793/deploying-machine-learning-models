@@ -1,20 +1,21 @@
 import re
+
 import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
 
+
 def get_title(passenger):
     line = passenger
-    if re.search('Mrs', line):
-        return 'Mrs'
-    elif re.search('Mr', line):
-        return 'Mr'
-    elif re.search('Miss', line):
-        return 'Miss'
-    elif re.search('Master', line):
-        return 'Master'
+    if re.search("Mrs", line):
+        return "Mrs"
+    elif re.search("Mr", line):
+        return "Mr"
+    elif re.search("Miss", line):
+        return "Miss"
+    elif re.search("Master", line):
+        return "Master"
     else:
-        return 'Other'
-
+        return "Other"
 
 
 def get_first_cabin(row):
@@ -29,7 +30,7 @@ class ExtractLetterTransformer(BaseEstimator, TransformerMixin):
 
     def __init__(self, variables):
         if not isinstance(variables, list):
-            raise ValueError('Variables should be list')
+            raise ValueError("Variables should be list")
         self.variables = variables
 
     def fit(self, X, y):

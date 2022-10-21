@@ -1,13 +1,13 @@
-package_name= 'classification_model'
+package_name = "classification_model"
 
 DATA_PATH = "https://www.openml.org/data/get_csv/16826755/phpMYEkMl"
 TRAINED_MODEL_DIR = "trained_models"
-PIPELINE_NAME =  'classification_model'
-PIPELINE_SAVE_FILE =  'classification_model_output_v'
-VERSION = '0.0.1'
+PIPELINE_NAME = "classification_model"
+PIPELINE_SAVE_FILE = "classification_model_output_v"
+VERSION = "0.0.1"
 # data sources
-TRAIN_DATA_FILE = 'train.csv'
-TEST_DATA_FILE = 'test.csv'
+TRAIN_DATA_FILE = "train.csv"
+TEST_DATA_FILE = "test.csv"
 # vars and features
 TARGET = "survived"
 
@@ -27,13 +27,11 @@ IMPUTATION_METHOD_MEAN_MEDIAN = "median"
 
 EXTRACT_LETTER_VARS = ["cabin"]
 
-NUMERIC_VARIABLES= [ 'age','sibsp', 'parch','fare']
+NUMERIC_VARIABLES = ["age", "sibsp", "parch", "fare"]
 
-NUMERIC_VARIABLES_WITH_NA=  ['age', 'fare']
+NUMERIC_VARIABLES_WITH_NA = ["age", "fare"]
 
-CATEGORICAL_VARIABLES= ['pclass','sex','cabin','embarked', 'title']
-
-
-CATEGORICAL_VARIABLES_WITH_NA= ['cabin', 'embarked']
+CATEGORICAL_VARIABLES = ["pclass", "sex", "cabin", "embarked", "title"]
 
 
+CATEGORICAL_VARIABLES_WITH_NA = ["cabin", "embarked"]
