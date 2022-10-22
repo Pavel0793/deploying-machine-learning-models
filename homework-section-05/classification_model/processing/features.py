@@ -33,7 +33,7 @@ class ExtractLetterTransformer(BaseEstimator, TransformerMixin):
             raise ValueError("Variables should be list")
         self.variables = variables
 
-    def fit(self, X, y):
+    def fit(self, X, y=None):
 
         return self
 

@@ -17,8 +17,7 @@ def test_make_prediction(sample_test_input):
 
     preds = result["predictions"]
     probs = result["probabilities"]
-    # print(type(preds), preds)
-    # print(type(probs), probs)
+
     assert isinstance(preds, np.ndarray) & isinstance(probs, np.ndarray)
     assert isinstance(preds[0], np.int64) & isinstance(probs[0], np.float64)
     assert result["errors"] is None

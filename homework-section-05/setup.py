@@ -7,8 +7,8 @@ from setuptools import find_packages, setup
 
 # Package meta-data.
 NAME = 'tid-classification-model'
-DESCRIPTION = "Example classification model package from Train In Data."
-URL = "https://github.com/trainindata/testing-and-monitoring-ml-deployments"
+DESCRIPTION = "Example classification model package from Titanic Kaggle."
+URL = "https://github.com/Pavel0793/deploying-machine-learning-models"
 EMAIL = "pavel0793@gmail.com"
 AUTHOR = "Pavel Trudkov"
 REQUIRES_PYTHON = ">=3.8.0"
