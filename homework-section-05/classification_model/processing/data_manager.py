@@ -1,6 +1,9 @@
+import os
+
 import joblib
 import numpy as np
 import pandas as pd
+from loguru import logger
 
 # load the data - it is available open source and online
 from sklearn.model_selection import train_test_split
@@ -11,6 +14,16 @@ from classification_model import __version__ as VERSION
 # import classification_model.config.config as config
 from classification_model.config.core import DATASET_FOLDER, TRAINED_MODEL_DIR, config
 from classification_model.processing.features import get_first_cabin, get_title
+
+
+def check_train_test_exist() -> bool:
+    """Check whether data loaded and splitted to avoid extra load"""
+    train_path = DATASET_FOLDER / config.app_config.train_data_file
+    test_path = DATASET_FOLDER / config.app_config.test_data_file
+    if os.path.isfile(train_path) and os.path.isfile(test_path):
+        return True
+    else:
+        return False
 
 
 def split_save_train_test(data: pd.DataFrame) -> None:
@@ -53,8 +66,10 @@ def load_dataset(*, dataset_path: str) -> pd.DataFrame:
     data.drop(
         labels=["name", "ticket", "boat", "body", "home.dest"], axis=1, inplace=True
     )
+    data["fare"] = data["fare"].astype("float")
+    data["age"] = data["age"].astype("float")
 
-    # display data
+    # split save data
     split_save_train_test(data)
 
     return data
@@ -85,16 +100,13 @@ def load_train_test(data_type: str):
 
     if data_type == "train":
         loading_path = DATASET_FOLDER / config.app_config.train_data_file
+        logger.info("Load Split Train")
     elif data_type == "test":
         loading_path = DATASET_FOLDER / config.app_config.test_data_file
+        logger.info("Load Split Test")
     df = pd.read_csv(loading_path)
-    # cast numerical variables as floats
-    df["fare"] = df["fare"].astype("float")
-    df["age"] = df["age"].astype("float")
-
     # cast cat variables as strings
     df["pclass"] = df["pclass"].astype(str)
-
     X = df[config.model_config.features]
     y = df[config.model_config.target]
 

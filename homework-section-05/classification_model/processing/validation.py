@@ -7,7 +7,7 @@ from pydantic import BaseModel, ValidationError
 from classification_model.config.core import config
 
 
-def drop_na_observations_in_test_data(input_data: pd.DataFrame) -> pd.DataFrame:
+def drop_na_features_in_test_data(input_data: pd.DataFrame) -> pd.DataFrame:
     input_data = input_data.copy()
     all_possible_na_features = (
         config.model_config.categorical_variables_with_na
@@ -26,7 +26,7 @@ def validate_inputs(input_data):
 
     input_data = input_data[config.model_config.features].copy()
 
-    validated_data = drop_na_observations_in_test_data(input_data)
+    validated_data = drop_na_features_in_test_data(input_data)
 
     errors = None
     try:

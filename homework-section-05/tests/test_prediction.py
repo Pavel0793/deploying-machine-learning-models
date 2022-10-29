@@ -2,7 +2,9 @@ import math
 import warnings
 
 import numpy as np
+from sklearn.metrics import accuracy_score
 
+from classification_model.config.core import config
 from classification_model.predict import make_prediction
 
 warnings.filterwarnings("ignore")
@@ -13,7 +15,7 @@ def test_make_prediction(sample_test_input):
     expected_first_prob_pred_val = 0.28211531
     expected_num_predictions = 262
 
-    result = make_prediction(sample_test_input)
+    result = make_prediction(test_set=sample_test_input)
 
     preds = result["predictions"]
     probs = result["probabilities"]

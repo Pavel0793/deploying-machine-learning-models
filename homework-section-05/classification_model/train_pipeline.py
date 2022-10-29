@@ -1,7 +1,9 @@
-# import config.config as config
+from loguru import logger
+
 from classification_model.config.core import DATA_PATH
 from classification_model.pipeline import titanic_pipe
 from classification_model.processing.data_manager import (
+    check_train_test_exist,
     load_dataset,
     load_train_test,
     save_pipeline,
@@ -10,8 +12,11 @@ from classification_model.processing.metrics import calculate_metrics
 
 
 def run_pipeline() -> None:
-    # loading
-    load_dataset(dataset_path=DATA_PATH)
+
+    if not check_train_test_exist():
+        # loading
+        logger.add("Loading data from website", level="INFO")
+        load_dataset(dataset_path=DATA_PATH)
 
     X_train, y_train = load_train_test(data_type="train")
     X_test, y_test = load_train_test(data_type="test")

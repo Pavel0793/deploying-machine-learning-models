@@ -1,6 +1,8 @@
 import logging
-
+import warnings
 from classification_model.config.core import PACKAGE_ROOT, config
+
+warnings.simplefilter("ignore", UserWarning)
 
 # It is strongly advised that you do not add any handlers other than
 # NullHandler to your library’s loggers. This is because the configuration
